@@ -5,7 +5,7 @@ import configparser
 
 from vk_apii.vk_analyzer.analyzer_utils import *
 from vk_apii.vk_parser import *
-from vk_parser.db.db_utils import PostgreSql
+from db.db_utils import PostgreSql
 
 
 def write_dict_to_xlsx_file(dictionary: dict):
