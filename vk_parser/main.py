@@ -57,15 +57,13 @@ def start():
 
     db_config = config['DB']
 
-    db = PostgreSql(db_name=db_config['DB_NAME'], user=db_config['DB_USER'],
-                    password=db_config['DB_PASSWORD'], host=db_config['DB_HOST'],
-                    schema_name=db_config['DB_SCHEME'])
+    db = PostgreSql(db_name=db_config['NAME'], user=db_config['USER'],
+                    password=db_config['PASSWORD'], host=db_config['HOST'],
+                    schema_name=db_config['SCHEME'])
 
     # saving into db
     for (key, value) in uniq_dict.items():
-        db.save(table_name='count_of_word',
-                return_id=True,
-                generated_columns=['id'],
+        db.save(table_name=db_config['TABLE'],
                 word=key, count=value)
 
     # print_dict(uniq_dict)
