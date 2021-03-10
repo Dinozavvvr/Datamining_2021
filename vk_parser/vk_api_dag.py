@@ -24,7 +24,13 @@ def get_dag_default_args():
 
 with DAG(dag_config['TITLE'], default_args=get_dag_default_args(),
          description=dag_config['DESCRIPTION'], start_date=datetime.today()) as dag:
-
     @task()
     def print_hello():
         print("hello")
+
+
+    run_this = PythonOperator(
+        task_id='hello_task',
+        python_callable=print_hello,
+        dag=dag,
+    )
