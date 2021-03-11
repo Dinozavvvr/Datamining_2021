@@ -11,7 +11,7 @@ sys.path.insert(0, parent_dir)
 
 from airflow import DAG
 from airflow.operators.python import task
-from vk_parser import start
+from main_file import start
 
 config = configparser.ConfigParser()
 config.read('../configuration.ini')
