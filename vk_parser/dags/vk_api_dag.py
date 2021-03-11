@@ -2,8 +2,8 @@
 from datetime import datetime
 
 import configparser
-import repackage
-repackage.up()
+import sys
+[sys.path.append(i) for i in ['.', '..']]
 
 from airflow import DAG
 from airflow.operators.python import task
