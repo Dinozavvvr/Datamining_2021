@@ -11,23 +11,23 @@ from airflow import DAG
 from airflow.operators.python import task
 from main_file import start
 
-config = configparser.ConfigParser()
-config.read('configuration.ini')
-dag_config = config['DAG']
+# config = configparser.ConfigParser()
+# config.read('configuration.ini')
+# dag_config = config['DAG']
 
 
 def get_dag_default_args():
     default_args = {
-        'owner': dag_config['OWNER'],
-        'retries': dag_config['RETRIES'],
-        'depends_on_past': dag_config['DEPENDS_ON_PAST']
+        'owner': 'Dinar Shagaliev',
+        'retries': 1,
+        'depends_on_past': False
     }
 
     return default_args
 
 
-with DAG(dag_config['TITLE'], default_args=get_dag_default_args(),
-         description=dag_config['DESCRIPTION'], start_date=datetime.today()) as dag:
+with DAG('post_parse', default_args=get_dag_default_args(),
+         description='post parse', start_date=datetime.today()) as dag:
     @task()
     def vk_post_parse_task():
         start()
