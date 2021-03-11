@@ -14,7 +14,7 @@ for i in range(len(script_path)):
 
 from airflow import DAG
 from airflow.operators.python import task
-from vk_parser.main_file import start
+from .main_file import start
 
 config = configparser.ConfigParser()
 config.read('../configuration.ini')
