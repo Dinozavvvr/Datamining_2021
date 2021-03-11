@@ -5,7 +5,7 @@ import configparser
 
 from airflow import DAG
 from airflow.operators.python import task, PythonOperator
-import vk_parser.main_file
+from vk_parser.main_file import start
 
 config = configparser.ConfigParser()
 config.read('../configuration.ini')
