@@ -1,4 +1,5 @@
 # Created by dinar at 10.03.2021
+import os
 from datetime import datetime
 
 import configparser
@@ -11,7 +12,7 @@ from airflow.operators.python import task
 from main_file import start
 
 config = configparser.ConfigParser()
-config.read('../configuration.ini')
+config.read(os.path.dirname(os.getcwd()) + '/configuration.ini')
 dag_config = config['DAG']
 
 

@@ -62,9 +62,9 @@ def start():
                     schema_name=db_config['SCHEME'])
 
     # saving into db
-    for (key, value) in uniq_dict.items():
-        db.save(table_name=db_config['TABLE'],
-                word=key, count=value)
+    # for (key, value) in uniq_dict.items():
+    #     db.save(table_name=db_config['TABLE'],
+    #             word=key, count=value)
 
     # print_dict(uniq_dict)
     # write_dict_to_xlsx_file(uniq_dict)
