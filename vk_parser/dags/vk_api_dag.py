@@ -7,7 +7,7 @@ repackage.up()
 
 from airflow import DAG
 from airflow.operators.python import task
-from ..main_file import start
+from vk_parser.main_file import start
 
 config = configparser.ConfigParser()
 config.read('../configuration.ini')
