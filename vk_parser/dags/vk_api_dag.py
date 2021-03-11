@@ -1,20 +1,17 @@
 # Created by dinar at 10.03.2021
+import configparser
+import inspect
+import os
+import sys
 from datetime import datetime
 
-import configparser
-import sys
-import os
-from functools import reduce
-
-[sys.path.append(i) for i in ['.', '..']]
-l = []
-script_path = os.path.split(sys.argv[0])
-for i in range(len(script_path)):
-    sys.path.append(reduce(os.path.join, script_path[:i + 1]))
+current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parent_dir = os.path.dirname(current_dir)
+sys.path.insert(0, parent_dir)
 
 from airflow import DAG
 from airflow.operators.python import task
-from .main_file import start
+from vk_parser import start
 
 config = configparser.ConfigParser()
 config.read('../configuration.ini')
