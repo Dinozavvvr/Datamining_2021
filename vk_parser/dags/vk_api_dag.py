@@ -12,7 +12,7 @@ from airflow.operators.python import task
 from main_file import start
 
 config = configparser.ConfigParser()
-config.read(os.path.dirname(os.getcwd()) + '/configuration.ini')
+config.read('configuration.ini')
 dag_config = config['DAG']
 
 
@@ -32,9 +32,3 @@ with DAG(dag_config['TITLE'], default_args=get_dag_default_args(),
     def vk_post_parse_task():
         start()
         print("end")
-
-    # run_this = PythonOperator(
-    #     task_id='hello_task',
-    #     python_callable=print_hello,
-    #     dag=dag,
-    # )
