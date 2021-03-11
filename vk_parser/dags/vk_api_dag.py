@@ -1,13 +1,15 @@
 # Created by dinar at 10.03.2021
-import configparser
-import inspect
-import os
-import sys
 from datetime import datetime
 
-current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-parent_dir = os.path.dirname(current_dir)
-sys.path.insert(0, parent_dir)
+import configparser
+import sys
+from pathlib import Path
+sys.path.append(str(Path('.').absolute().parent))
+# import os, sys, inspect
+#
+# current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+# parent_dir = os.path.dirname(current_dir)
+# sys.path.insert(0, parent_dir)
 
 from airflow import DAG
 from airflow.operators.python import task
