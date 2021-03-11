@@ -3,7 +3,14 @@ from datetime import datetime
 
 import configparser
 import sys
+import os
+from functools import reduce
+
 [sys.path.append(i) for i in ['.', '..']]
+l = []
+script_path = os.path.split(sys.argv[0])
+for i in range(len(script_path)):
+    sys.path.append(reduce(os.path.join, script_path[:i + 1]))
 
 from airflow import DAG
 from airflow.operators.python import task
