@@ -1,14 +1,12 @@
 # Created by dinar at 10.03.2021
-import os
 from datetime import datetime
 
-import configparser
 import sys
 from pathlib import Path
 sys.path.append(str(Path('.').absolute().parent))
 
 from airflow import DAG
-from main_file import start
+from vk_parser.main.main_file import start
 
 # config = configparser.ConfigParser()
 # config.read('configuration.ini')
