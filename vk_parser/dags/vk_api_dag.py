@@ -6,7 +6,7 @@ from pathlib import Path
 sys.path.append(str(Path('.').absolute().parent))
 
 from airflow import DAG
-from vk_parser.main.main_file import start
+from main.main_file import start
 
 # config = configparser.ConfigParser()
 # config.read('configuration.ini')
