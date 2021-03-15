@@ -37,19 +37,19 @@ with DAG(dag_id='test_dag', default_args=get_dag_default_args(),
 
 
     print_show_time_task = PythonOperator(
-        task_id='pivot_dataset',
+        task_id='print show time task',
         python_callable=print_show_time_task,
         dag=dag
     )
 
     print_bye_task = PythonOperator(
-        task_id='pivot_dataset',
+        task_id='print bye task',
         python_callable=print_bye_task,
         dag=dag
     )
 
     print_hello_task = PythonOperator(
-        task_id='pivot_dataset',
+        task_id='print hello task',
         python_callable=print_hello_task,
         dag=dag
     )
