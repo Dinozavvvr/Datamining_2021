@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import vk_api
+
+from vk_api import VkApi
 import xlsxwriter
 import configparser
 
@@ -41,7 +42,7 @@ def start():
 
     vk_api_config = config['VK_API']
 
-    vk_parser = VkParser(vk_api.VkApi(token=str(vk_api_config['TOKEN'])).get_api())
+    vk_parser = VkParser(VkApi(token=str(vk_api_config['TOKEN'])).get_api())
     posts = vk_parser.get_posts_by_id(owner_id=vk_api_config['ITIS_ID'], count=int(vk_api_config['COUNT']),
                                       offset=int(vk_api_config['OFFSET']))
 
