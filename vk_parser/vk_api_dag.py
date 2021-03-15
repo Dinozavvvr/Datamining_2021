@@ -17,7 +17,7 @@ start_time = datetime.now() + timedelta(minutes=1)
 def get_dag_default_args():
     default_args = {
         'owner': 'Dinar Shagaliev',
-        'retries': 1,
+        'retries': 2,
         'depends_on_past': False,
         'start_date': datetime.today(),
         'retry_delay': timedelta(minutes=1),

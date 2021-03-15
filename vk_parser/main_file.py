@@ -5,6 +5,7 @@ import configparser
 
 import sys
 from pathlib import Path
+
 sys.path.append(str(Path('main').absolute().parent))
 
 from vk_apii.vk_analyzer.analyzer_utils import *
@@ -67,9 +68,14 @@ def start():
     # clear db
     db.clear_table('count_of_word')
     # saving into db
+    counter = 1
     for (key, value) in uniq_dict.items():
-        db.save(table_name=db_config['TABLE'],
-                word=key, count=value)
+        if counter <= int(vk_api_config['COUNT']):
+            db.save(table_name=db_config['TABLE'],
+                    word=key, count=value)
+            counter += 1
+        else:
+            break
 
     # print_dict(uniq_dict)
     # write_dict_to_xlsx_file(uniq_dict)
