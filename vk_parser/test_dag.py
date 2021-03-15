@@ -6,6 +6,7 @@ from datetime import datetime
 import sys
 from pathlib import Path
 from airflow import DAG
+from airflow.operators.python import PythonOperator
 
 sys.path.append(str(Path('dags').absolute().parent))
 
@@ -22,17 +23,34 @@ def get_dag_default_args():
 
 with DAG(dag_id='test_dag', default_args=get_dag_default_args(),
          description='post parse', schedule_interval=None) as dag:
-    @dag.task()
+
     def print_hello_task():
         print('hello')
 
 
-    @dag.task()
     def print_bye_task():
         print('bye')
 
 
-    @dag.task()
     def print_show_time_task():
         print(datetime.now())
+
+
+    print_show_time_task = PythonOperator(
+        task_id='pivot_dataset',
+        python_callable=print_show_time_task,
+        dag=dag
+    )
+
+    print_bye_task = PythonOperator(
+        task_id='pivot_dataset',
+        python_callable=print_bye_task,
+        dag=dag
+    )
+
+    print_hello_task = PythonOperator(
+        task_id='pivot_dataset',
+        python_callable=print_hello_task,
+        dag=dag
+    )
 
