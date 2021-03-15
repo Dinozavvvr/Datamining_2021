@@ -71,8 +71,8 @@ def start():
         db.save(table_name=db_config['TABLE'],
                 word=key, count=value)
 
-    print_dict(uniq_dict)
-    write_dict_to_xlsx_file(uniq_dict)
+    # print_dict(uniq_dict)
+    # write_dict_to_xlsx_file(uniq_dict)
 
 
 if __name__ == '__main__':
