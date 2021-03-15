@@ -71,7 +71,7 @@ def start():
     # saving into db
     counter = 1
     for (key, value) in uniq_dict.items():
-        if counter <= int(vk_api_config['COUNT']):
+        if counter <= int(vk_api_config['COUNT_OF_WORDS']):
             db.save(table_name=db_config['TABLE'],
                     word=key, count=value)
             counter += 1
