@@ -3,10 +3,10 @@ from datetime import datetime
 
 import sys
 from pathlib import Path
-sys.path.append(str(Path('.').absolute().parent))
+sys.path.append(str(Path('dags').absolute().parent))
 
 from airflow import DAG
-import start
+from main.main_file import start
 
 # config = configparser.ConfigParser()
 # config.read('configuration.ini')

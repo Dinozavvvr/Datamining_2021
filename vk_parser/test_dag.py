@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 from airflow import DAG
 
-sys.path.append(str(Path('.').absolute().parent))
+sys.path.append(str(Path('dags').absolute().parent))
 
 
 def get_dag_default_args():
@@ -21,7 +21,7 @@ def get_dag_default_args():
 
 
 with DAG(dag_id='test_dag', default_args=get_dag_default_args(),
-         description='post parse', start_date=datetime.today(), schedule_interval=None) as dag:
+         description='post parse', schedule_interval=None) as dag:
     @dag.task()
     def print_hello_task():
         print('hello')
