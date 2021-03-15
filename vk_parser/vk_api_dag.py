@@ -1,5 +1,5 @@
 # Created by dinar at 10.03.2021
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import sys
 from pathlib import Path
@@ -23,7 +23,7 @@ def get_dag_default_args():
 
 
 with DAG('vk_api_post_parse_dag', default_args=get_dag_default_args(),
-         description='post parse', start_date=datetime.now(), schedule_interval=None) as dag:
+         description='post parse', start_date=datetime.now() + timedelta(minutes=1), schedule_interval=None) as dag:
 
     def vk_post_parse_task():
         start()
