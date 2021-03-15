@@ -5,7 +5,7 @@ import configparser
 
 import sys
 from pathlib import Path
-sys.path.append(str(Path('.').absolute().parent))
+sys.path.append(str(Path('main').absolute().parent))
 
 from vk_apii.vk_analyzer.analyzer_utils import *
 from vk_apii.vk_parser import *
@@ -64,14 +64,15 @@ def start():
     db = PostgreSql(db_name=db_config['NAME'], user=db_config['USER'],
                     password=db_config['PASSWORD'], host=db_config['HOST'],
                     schema_name=db_config['SCHEME'])
-
+    # clear db
+    db.clear_table('count_of_word')
     # saving into db
-    # for (key, value) in uniq_dict.items():
-    #     db.save(table_name=db_config['TABLE'],
-    #             word=key, count=value)
+    for (key, value) in uniq_dict.items():
+        db.save(table_name=db_config['TABLE'],
+                word=key, count=value)
 
-    # print_dict(uniq_dict)
-    # write_dict_to_xlsx_file(uniq_dict)
+    print_dict(uniq_dict)
+    write_dict_to_xlsx_file(uniq_dict)
 
 
 if __name__ == '__main__':

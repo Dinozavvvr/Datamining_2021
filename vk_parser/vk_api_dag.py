@@ -3,14 +3,13 @@ from datetime import datetime
 
 import sys
 from pathlib import Path
+
+from airflow.operators.python import PythonOperator
+
 sys.path.append(str(Path('dags').absolute().parent))
 
 from airflow import DAG
-from main.main_file import start
-
-# config = configparser.ConfigParser()
-# config.read('configuration.ini')
-# dag_config = config['DAG']
+from main_file import start
 
 
 def get_dag_default_args():
@@ -26,7 +25,12 @@ def get_dag_default_args():
 with DAG('vk_api_dag', default_args=get_dag_default_args(),
          description='post parse', start_date=datetime.today(), schedule_interval=None) as dag:
 
-    @dag.task()
     def vk_post_parse_task():
         start()
-        print("end")
+
+
+    vk_post_parse_task = PythonOperator(
+        task_id='vk_post_parse',
+        python_callable=vk_post_parse_task,
+        dag=dag
+    )
