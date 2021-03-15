@@ -8,7 +8,7 @@ class PostgreSql:
     __SQL_GET_COLUMNS = "SELECT column_name FROM information_schema.columns " \
                         "WHERE table_schema = '{schema_name}' AND table_name = '{table}'"
 
-    __SQL_TRUNCATE_TABLE = "TRUNCATE TABLE '{table}'"
+    __SQL_TRUNCATE_TABLE = "TRUNCATE TABLE {table}"
 
     def __init__(self, db_name, user,
                  password, host, schema_name):
