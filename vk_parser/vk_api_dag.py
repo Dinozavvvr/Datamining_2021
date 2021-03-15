@@ -23,7 +23,7 @@ def get_dag_default_args():
 
 
 with DAG('vk_api_dag', default_args=get_dag_default_args(),
-         description='post parse', start_date=datetime.today(), schedule_interval=None) as dag:
+         description='post parse', start_date=datetime.now(), schedule_interval=None) as dag:
 
     def vk_post_parse_task():
         start()
