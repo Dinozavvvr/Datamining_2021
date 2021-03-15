@@ -11,6 +11,8 @@ sys.path.append(str(Path('dags').absolute().parent))
 from airflow import DAG
 from main_file import start
 
+start_time = datetime.now() + timedelta(minutes=1)
+
 
 def get_dag_default_args():
     default_args = {
@@ -23,14 +25,9 @@ def get_dag_default_args():
 
 
 with DAG('vk_api_post_parse_dag', default_args=get_dag_default_args(),
-         description='post parse', start_date=datetime.now() + timedelta(minutes=1), schedule_interval=None) as dag:
-
-    def vk_post_parse_task():
-        start()
-
-
+         description='post parse', start_date=start_time, schedule_interval=None) as dag:
     vk_post_parse_task = PythonOperator(
         task_id='vk_post_parse_task',
-        python_callable=vk_post_parse_task,
+        python_callable=start,
         dag=dag
     )
