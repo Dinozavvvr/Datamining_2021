@@ -22,7 +22,7 @@ def get_dag_default_args():
 
 
 with DAG(dag_id='test_dag', default_args=get_dag_default_args(),
-         description='post parse', schedule_interval=None) as dag:
+         description='post parse', start_date=datetime.now(), schedule_interval=None) as dag:
 
     def print_hello_task():
         print('hello')
