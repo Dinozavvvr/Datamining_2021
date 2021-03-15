@@ -26,7 +26,7 @@ def get_dag_default_args():
     return default_args
 
 
-with DAG('vk_api_post_parse_dag', default_args=get_dag_default_args(),
+with DAG('vk_api', default_args=get_dag_default_args(),
          description='post parse',schedule_interval=None) as dag:
     vk_post_parse_task = PythonOperator(
         task_id='vk_post_parse_task',
