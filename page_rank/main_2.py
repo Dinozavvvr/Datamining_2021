@@ -180,8 +180,6 @@ def get_page_rank_matrix(g, d_factor, iterations):
 
     for i in range(iterations):
         v = sum_vectors(multiple_matrix_on_vector(g, v, d_factor), e)
-        print(v)
-        print(sum(v))
     return v
 
 
@@ -227,8 +225,6 @@ def start():
 
     page_rank = get_page_rank_matrix(g, 0.85, 20)
     save_page_rank_to_db(page_rank)
-
-    print(sum(page_rank))
 
     after_execution = time.time()
     print(str(after_execution - before_execution))
