@@ -43,7 +43,7 @@ class TextAnalyzerUtil:
         # To lowercase
         text = text.lower()
         # Remove - " - symbols
-        text = re.sub("[«»”“]", "", text)
+        text = re.sub("[«»”“–•]", "", text)
 
         # Remove no utf-8 symbols
         text = text.encode('utf-8', 'ignore').decode()
