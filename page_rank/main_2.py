@@ -217,7 +217,7 @@ def start():
     before_execution = time.time()
     search_and_fill(
         nesting=int(c['HTML']['NESTING']),
-        pool_size=12,
+        pool_size=20,
         key=1
     )
 
