@@ -39,13 +39,13 @@ public class Main {
         findAlanMoments(random500Positions, streamLength);
     }
 
-    private static void countAlonMatiasMoment(List<Counter> random100Positions, int randomItem, int current) {
-        random100Positions.forEach(counter -> {
+    private static void countAlonMatiasMoment(List<Counter> randomPositions, int item, int current) {
+        randomPositions.forEach(counter -> {
             if (counter.getIndex() == current) {
-                counter.setItem(randomItem);
+                counter.setItem(item);
                 counter.setCount(1);
             } else if (counter.getIndex() < current) {
-                if (counter.getItem() == randomItem) {
+                if (counter.getItem() == item) {
                     counter.setCount(counter.getCount() + 1);
                 }
             }
